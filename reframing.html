@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reorientar VenezuelaDataCrisis para la fase de reconstrucción</title>
+<style>
+  :root {
+    --text: #1c1c1e;
+    --muted: #5a5a5f;
+    --accent: #b3492b;
+    --accent-soft: #f3e6df;
+    --bg: #fbfaf8;
+    --card: #ffffff;
+    --rule: #e4e0d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 24px 100px;
+  }
+  header.hero {
+    margin-bottom: 40px;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 28px;
+  }
+  .kicker {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  h1.title {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+  .subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
+    margin-top: 52px;
+    margin-bottom: 18px;
+    color: var(--text);
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  h3 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+    margin-top: 34px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  p { margin: 0 0 16px; font-size: 1.05rem; }
+  ul, ol { margin: 0 0 16px; padding-left: 24px; }
+  li { margin-bottom: 10px; font-size: 1.05rem; }
+  li > ul, li > ol { margin-top: 10px; }
+  strong { color: var(--text); }
+  .tldr {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 8px;
+  }
+  .tldr ul { margin-bottom: 0; }
+  code {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    background: #efece5;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.92em;
+    color: #6b3a20;
+  }
+  .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 44px 0;
+  }
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  em { color: var(--muted); }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1 class="title">VenezuelaDataCrisis para la fase de reconstrucción: qué necesita realmente la recuperación</h1>
+</header>
+
+<section class="tldr">
+  <h3 style="margin-top:0;">Resumen ejecutivo</h3>
+  <ul>
+    <li><strong>El proyecto debería trasladarse del registro de personas desaparecidas hacia un directorio conectado con HDX, y centrado en servicios, instalaciones y presencia operativa:</strong> centros de acopio y donación, hospitales, escuelas en funcionamiento, refugios, centros colectivos, y una capa de sociedad civil de tipo "Quién hace Qué y Dónde" (3W). </br></br> Estos son los datos operativos que consumen OCHA, PNUD, OIM, OPS. Estos tipos cuadran con el pipeline existente (scraping, deduplicación, Supabase, PostgREST).</li></br>
+    <li><strong>Lo que pierde prioridad: el registro en vivo de personas desaparecidas.</strong> A dos semanas del suceso, su valor para salvar vidas esta agotado. </br></br>Podriamos conservar los valores como archivo para la reunificación familiar (Restablecimiento del Contacto entre Familiares del CICR), la contabilidad de víctimas y verificación independiente, pero deberíamos congelarlo y curarlo en lugar de ampliarlo. El seguimiento de operaciones de rescate y los datos de personas atrapadas también tienen ahora poco valor.</li></br>
+    <li><strong>Lo que el pipeline no no debería intentar ofrecer:</strong> evaluación de daños y pérdidas para el PDNA, análisis satelital de daños estructurales, de seguridad estructural por parte de ingenieros, registros catastrales, certificación legal de defunciones y desembolso del financiamiento de la reconstrucción. </li>
+  </ul>
+</section>
+
+<h1>La oportunidad</h1>
+<p><strong>El vacío actual es de transaprencia y conección.</strong>Nadie tiene una cifra de cuántas personas murieron o siguen desaparecidas. Nadie sabe quien hace que, como se mueve el dinero de ayuda, que hace cada organización y el gobierno no es fiable. Hay un hueco que se puede llenar por un tercero, un auditor que intenta explicar que pasa, un conector que sincroniza distintas organizaciones. Como más de 200 páginas webs están bloqueadas en el país, es difícil saber que está pasando, además la mayoría de los proyectos no son transaparentes (comó el nuestro). Por eso una organización como PROVEA pide que alguien verifique todo esto de forma independiente.</p>
+<h2>Lo que se está haciendo:</h2>
+<ul>
+  <li><strong>PDNA (Evaluación de Necesidades Posdesastre):</strong> el plan oficial de recuperación, liderado por el gobierno con apoyo de la UE, el PNUD y el Banco Mundial. Calcula cuánto cuesta reconstruir cada sector (vivienda, salud, educación, etc.). Los datos de la sociedad civil pueden alimentarlo, pero no lo reemplazan.</li>
+<li><strong>CODs (Conjuntos de Datos Operativos Comunes):</strong> las bases de datos oficiales que usa todo el mundo humanitario, publicadas por OCHA. Incluyen límites administrativos, población, carreteras, hospitales, escuelas, etc.</li>
+<li><strong>HXL:</strong> un sistema simple de etiquetas (como <code>#org</code>, <code>#sector</code>, <code>#loc</code>) que se agrega a una hoja de cálculo para que cualquier sistema humanitario pueda leerla automáticamente, sin cambiar el formato.</li>
+<li><strong>3W/4W/5W:</strong> un mapa de quién está haciendo qué y dónde. Sirve para que las organizaciones no se pisen entre sí ni dejen zonas sin cubrir. OCHA Venezuela ya tiene uno.</li>
+<li><strong>IATI:</strong> el estándar para publicar de forma transparente a dónde va el dinero de la ayuda y la reconstrucción.</li>
+<li><strong>Open Referral / HSDS:</strong> el formato estándar para directorios de servicios (qué organización ofrece qué y dónde), pensado para que apps y sistemas de referencia lo puedan usar.</li>
+<li><strong>DTM (OIM):</strong> el sistema estándar para rastrear desplazamiento de personas, desde la emergencia hasta que encuentran una solución de vivienda estable.</li>
+<li><strong>Marco de Sendai:</strong> los indicadores oficiales que los países usan para reportar pérdidas por desastres, tanto dinero perdido como daño a hospitales, escuelas e infraestructura.</li>
+</ul>
+
+
+
+<div class="divider"></div>
+
+<h1>Que hacer</h1>
+
+<p>Lo primero es entender que tenemos tiempo, no mucho, pero tenemos, estimo como 2 semanas más. Antes estabamos apurados, porque estabamos enfocados en soportar rescate. Ahora, si queremos ser un auditor, tenemos más chance.</p>
+ 
+<h2>Esta Semana</h2>
+<ol>
+  <li><strong>Etiquetar los datos con HXL.</strong> Agrega una fila de códigos estándar a cada tabla que exportamos. Es un cambio que hace que OCHA, la OPS y el PNUD puedan usar los datos de inmediato.</li>
+  <li><strong>Publicar los datos en HDX.</strong> Hospitales, refugios, centros de acopio, todo lo que rastreamos. Agregando una nota de "no verificado de forma independiente".</li>
+  <li><strong>congelar el registro de desaparecidos.</strong> Dejar de tratarlo como algo que crece a diario. Lo convertimos en un archivo documentado y lo ofrecemos al Comité Internacional de la Cruz Roja para ayudar en la reunificación familiar.</li>
+</ol>
+ 
+<h2>En las próximas semanas</h2>
+<ol start="4">
+  <li><strong>Armar un mapa de "quién hace qué y dónde".</strong> Usar los datos de coordinación para mostrar qué organizaciones trabajan en cada zona. Esto es especialmente valioso porque captamos iglesias, brigadas locales y grupos que OCHA no ve.</li>
+  <li><strong>Amplíar lo que tenemos.</strong> Además de hospitales, agregamos escuelas y puntos de agua y saneamiento. Marcamos si están abiertos, parcialmente funcionando o cerrados.</li>
+  <li><strong>Hacemos los datos compatibles con Open Referral.</strong> Así cualquier app de servicios puede usarlos.</li>
+  <li><strong>Conecta con KoboToolbox.</strong> Es la herramienta que usan las organizaciones humanitarias para levantar datos de campo. Conectarte a ella te da acceso a más fuentes.</li>
+</ol>
+ 
+<h2>Cuando haya tiempo</h2>
+<ol start="8">
+  <li><strong>Cruzamos los datos de edificios con los análisis satelitales de daños</strong> de Microsoft, la NASA o el PNUD.</li>
+  <li><strong>Seguimiento del dinero.</strong> Aclaramos dónde va el financiamiento de la reconstrucción.</li>
+  <li><strong>Ofrecemos los datos al PNUD y a OCHA</strong> como insumo para el plan oficial de reconstrucción.</li>
+</ol>
+ 
+<h2>Lo que no hay que intentar hacer</h2>
+<ul>
+  <li>Certificar muertes ni dar cifras oficiales de víctimas.</li>
+  <li>Evaluar si un edificio es seguro, eso lo hacen ingenieros.</li>
+  <li>Tocar registros de propiedad o tierra.</li>
+  <li>Manejar fondos.</li>
+</ul>
+ 
+<div class="summary">
+  <strong>En resumen:</strong> Nuestra fortaleza es organizar y publicar datos de servicios y coordinación, no generar evaluaciones oficiales. Hacemos bien lo primero y enlazamos a quien hace lo segundo.
+</div>
+</body>
+</html>
